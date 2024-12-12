@@ -32,7 +32,7 @@ Creating an AI instance
 usage and methods of using one AI instance
 
 ```python  
-    from Simple_AI.simple import *
+    from Simple_AI import *
 
     API = AI("gpt4","OPENAI_API_KEY","gpt-4o")
 
@@ -62,7 +62,7 @@ Use multiple AI instances at once using a Batch Instance.
 
 ```python
     
-    from Simple_AI.simple import *
+    from Simple_AI import *
     import pprint
 
     gpt = AI("gpt","OPENAI_API_KEY","gpt-4o")
@@ -90,7 +90,7 @@ Use multiple of the same AI instances at once.
 
 ```python
 
-    from Simple_AI.simple import *
+    from Simple_AI import *
     import pprint
 
     angry = AI("angry","OPENAI_API_KEY","gpt-4o")
