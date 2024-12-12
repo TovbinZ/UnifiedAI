@@ -21,13 +21,6 @@ def AI(name : str, key : str, model : str) -> API:
 
 
 
-
-
-
-	
-
-
-
 class Batch():
 	def __init__(self, models: list):
 		
@@ -55,7 +48,6 @@ class Batch():
 
 		for model in self.models:
 			responses[model.name] = model.get_response(question)
-
 
 		return responses
 
