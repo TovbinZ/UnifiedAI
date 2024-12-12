@@ -1,4 +1,4 @@
-from Simple_AI.api import API
+from UnifiedAI.api import API
 import google.generativeai as genai
 from google.generativeai.types.generation_types import GenerateContentResponse
 

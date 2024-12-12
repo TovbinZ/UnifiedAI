@@ -1,7 +1,7 @@
-from Simple_AI.api import API
-from Simple_AI.claude import Claude
-from Simple_AI.gpt import GPT
-from Simple_AI.gemini import Gemini
+from UnifiedAI.api import API
+from UnifiedAI.claude import Claude
+from UnifiedAI.gpt import GPT
+from UnifiedAI.gemini import Gemini
 
 
 def AI(name : str, key : str, model : str) -> API:

@@ -1,5 +1,5 @@
 from anthropic import Anthropic
-from Simple_AI.api import API
+from UnifiedAI.api import API
 import os
 
 # Anthropic 0.30.1

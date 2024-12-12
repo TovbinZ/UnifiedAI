@@ -1,6 +1,6 @@
 from openai import OpenAI
 from openai.types.chat import ChatCompletionMessageParam, ChatCompletionUserMessageParam
-from Simple_AI.api import API
+from UnifiedAI.api import API
 
 #python version 3.11
 # openai==1.35.8 or 1.56.2
