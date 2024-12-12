@@ -25,7 +25,7 @@ Usage
 
 usage and methods of using one AI instance
 
-```
+```python
 
     from Simple_AI.simple import *
 
@@ -55,7 +55,7 @@ usage and methods of using one AI instance
 Use multiple AI instances at once using a Batch Instance
 
 
-```
+```python
 from Simple_AI.simple import *
 import pprint
 
