@@ -9,7 +9,6 @@ Simple_AI is a Python package that simplifies interaction with multiple AI APIs 
 - Single API for multiple AI providers
 - Easy switching between different AI models
 - Simplified authentication and API key management
-- Built-in error handling and rate limiting
 
 
 Installation
