@@ -32,6 +32,8 @@ class Gemini(API):
 	def _ask(self):
 		response : GenerateContentResponse = self.connect.start_chat(history=self.history).send_message("?")
 
+		print(f"recieved {self.name}'s response.\n")
+
 		return response.text
 
 

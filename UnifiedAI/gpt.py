@@ -29,6 +29,8 @@ class GPT(API):
 		response = self.connect.chat.completions.create(
 			model=self.model_name, messages=self.history,max_tokens=self.max_tokens)
 
+		print(f"recieved {self.name}'s response.\n")
+
 		return str(response.choices[0].message.content)
 
 

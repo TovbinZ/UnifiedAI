@@ -30,6 +30,8 @@ class Claude(API):
 			messages=self.history
 		)
 
+		print(f"recieved {self.name}'s response.\n")
+
 		return  response.content[0].text  # type: ignore
 
 
