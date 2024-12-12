@@ -54,7 +54,7 @@ class Batch():
 		responses = {}
 
 		for model in self.models:
-			responsa[model.name] = model.get_response(question)
+			responses[model.name] = model.get_response(question)
 
 
 		return responses
