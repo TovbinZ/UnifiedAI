@@ -15,7 +15,7 @@ Installation
 ============
 
 
-    pip install simple_ai
+    pip install UnifiedAI
 
 
 Usage
@@ -32,7 +32,7 @@ Creating an AI instance
 Usage and methods of using one AI instance
 
 ```python  
-    from Simple_AI import *
+    from UnifiedAI import *
 
     API = AI("gpt4","OPENAI_API_KEY","gpt-4o")
 
@@ -62,7 +62,7 @@ Use multiple AI instances at once using a Batch instance.
 
 ```python
     
-    from Simple_AI import *
+    from UnifiedAI import *
     import pprint
 
     gpt = AI("gpt","OPENAI_API_KEY","gpt-4o")
@@ -89,7 +89,7 @@ Compare responses with different system instructions.
 
 ```python
 
-    from Simple_AI import *
+    from UnifiedAI import *
     import pprint
 
     angry = AI("angry","OPENAI_API_KEY","gpt-4o")
