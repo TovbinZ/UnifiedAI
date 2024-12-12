@@ -1,14 +1,14 @@
-Simple_AI
+UnifiedAI
 =========
 
-Simple_AI is a Python package that simplifies interaction with multiple AI APIs by providing a single, unified API. Currently, it supports OpenAI, Anthropic, and Google AI APIs.
+UnifiedAI is a Python package that simplifies the usage of multiple AI APIs by providing a single, unified API. Currently, it supports OpenAI, Anthropic, and Google AI APIs.
 
 
 ## Features
 
-- Single API for multiple AI providers
-- Easy switching between different AI models
-- Simplified authentication and API key management
+- Single API for multiple AI providers.
+- Easy switching between different AI models.
+- Simplified authentication and API key management.
 
 
 Installation
