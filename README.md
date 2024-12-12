@@ -29,7 +29,7 @@ Creating an AI instance
 
 ```
 
-usage and methods of using one AI instance
+Usage and methods of using one AI instance
 
 ```python  
     from Simple_AI import *
@@ -57,7 +57,7 @@ usage and methods of using one AI instance
     
 ```
 
-Use multiple AI instances at once using a Batch Instance.
+Use multiple AI instances at once using a Batch instance.
 
 
 ```python
@@ -85,6 +85,8 @@ Use multiple AI instances at once using a Batch Instance.
 
 ```
 
+Compare responses with different system instructions. 
+
 ```python
 
     from Simple_AI import *
@@ -105,6 +107,7 @@ Use multiple AI instances at once using a Batch Instance.
 
 
     emotions.set_max_tokens(100)
+
 
     pprint.pp(emotions.get_response("What is 1 + 1?"))
 
