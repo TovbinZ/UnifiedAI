@@ -85,9 +85,6 @@ Use multiple AI instances at once using a Batch Instance.
 
 ```
 
-Use multiple of the same AI instances at once.
-
-
 ```python
 
     from Simple_AI import *
