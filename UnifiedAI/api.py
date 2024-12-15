@@ -30,7 +30,6 @@ class API(ABC):
     # get response from the ai with self.history as context along with the question.
     def get_response(self, question: str) -> None:
        self._add(question)
-       print(f"recieved {self.name}'s response")
        return self._ask()
 
 
