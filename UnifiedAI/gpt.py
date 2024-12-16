@@ -2,15 +2,12 @@ from openai import OpenAI
 from openai.types.chat import ChatCompletionMessageParam, ChatCompletionUserMessageParam
 from UnifiedAI.api import API
 
-#python version 3.11
-# openai==1.35.8 or 1.56.2
-
-
-
 class GPT(API):
 	def __init__(self, name : str,  api_key: str, model : str):
 
 		self.name = name
+
+		self.type = "gpt"
 		
 		self.api_key = api_key
 
@@ -22,7 +19,17 @@ class GPT(API):
 
 		self.max_tokens = 512
 
+		self.usage = self.Usage(0,0)
+
 		self.history: list[ChatCompletionMessageParam] = [{"role": "system", "content": f"{self.system_instructions}"},]
+
+
+
+	def _trackUsage(self,message) -> None:
+
+		self.usage.input_tokens = message.usage.prompt_tokens
+
+		self.usage.output_tokens = message.usage.completion_tokens
 
 
 	def _ask(self) -> str:
@@ -30,6 +37,8 @@ class GPT(API):
 			model=self.model_name, messages=self.history,max_tokens=self.max_tokens)
 
 		print(f"recieved {self.name}'s response.\n")
+
+		self._trackUsage(response)
 
 		return str(response.choices[0].message.content)
 

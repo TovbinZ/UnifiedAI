@@ -1,9 +1,20 @@
 from abc import ABC, abstractmethod
-from typing import Any
-
 
 class API(ABC):
-	
+
+    class Usage():
+        def __init__(self,_input_tokens : int, _output_tokens : int):
+            self.input_tokens = _input_tokens
+
+            self.output_tokens = _output_tokens
+
+
+
+    # abstract helper method for tracking token usage
+    @abstractmethod
+    def _trackUsage(self,message) -> None:
+        pass
+
 	# abstract helper method for adding text to self.history
     @abstractmethod
     def _add(self, text: str) -> None:
@@ -31,7 +42,6 @@ class API(ABC):
     def get_response(self, question: str) -> None:
        self._add(question)
        return self._ask()
-
 
     # return a cleaned up self.history.
     @abstractmethod

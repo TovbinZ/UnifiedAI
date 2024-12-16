@@ -15,7 +15,6 @@ def AI(name : str, key : str, model : str) -> API:
 	elif "gemini" in model:
 		return Gemini(name, key, model)
 
-
 	else:
 		raise NameError("No model of that name.")
 
@@ -25,6 +24,8 @@ class Batch():
 	def __init__(self, models: list):
 		
 		self.models = models
+
+		self.usage : dict = {}
 
 
 	def set_instructions(self,instructions : str) -> None:
@@ -48,6 +49,8 @@ class Batch():
 
 		for model in self.models:
 			responses[model.name] = model.get_response(question)
+
+			self.usage[model.name] = model.Usage(model.usage.input_tokens,model.usage.output_tokens)
 
 		return responses
 

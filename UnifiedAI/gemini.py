@@ -3,16 +3,14 @@ import google.generativeai as genai
 from google.generativeai.types.generation_types import GenerateContentResponse
 
 
-
-
 class Gemini(API):
 	def __init__(self, name : str, api_key : str, model : str):
 		
 		self.name = name
 
-		self.api_key = api_key
+		self.type = "gemini"
 
-		genai.configure(api_key = self.api_key)
+		self.api_key = api_key
 
 		self.system_instructions =  "You are a helpful assistant."
 
@@ -20,17 +18,32 @@ class Gemini(API):
 
 		self.max_tokens = 512
 
+		genai.configure(api_key = self.api_key)
+
 		self.connect = genai.GenerativeModel(
-            model_name=self.model_name,
-            generation_config = {"max_output_tokens": self.max_tokens},
-            system_instruction = self.system_instructions,
+			model_name=self.model_name,
+			generation_config = {"max_output_tokens": self.max_tokens},
+			system_instruction = self.system_instructions,
         )
+
+		self.usage = self.Usage(0,0)
 
 		self.history = []
 
 
+
+	def _trackUsage(self,message) -> None:
+
+		self.usage.input_tokens = message.usage_metadata.prompt_token_count
+
+		self.usage.output_tokens = message.usage_metadata.candidates_token_count
+
+
 	def _ask(self):
+
 		response : GenerateContentResponse = self.connect.start_chat(history=self.history).send_message("?")
+
+		self._trackUsage(response)
 
 		print(f"recieved {self.name}'s response.\n")
 

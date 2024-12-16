@@ -1,13 +1,12 @@
 from anthropic import Anthropic
 from UnifiedAI.api import API
-import os
-
-# Anthropic 0.30.1
 
 class Claude(API):
 	def __init__(self, name : str, api_key: str, model : str):
 		
 		self.name = name
+
+		self.type = "claude"
 
 		self.api_key = api_key
 
@@ -19,8 +18,16 @@ class Claude(API):
 
 		self.max_tokens = 512
 
+		self.usage = self.Usage(0,0)
+
 		self.history = []
 
+
+	def _trackUsage(self,message) -> None:
+
+		self.usage.input_tokens = message.usage.input_tokens
+
+		self.usage.output_tokens = message.usage.output_tokens
 
 	def _ask(self) -> str:
 		response = self.connect.messages.create(
@@ -29,6 +36,8 @@ class Claude(API):
 			system=self.system_instructions,
 			messages=self.history
 		)
+
+		self._trackUsage(response)
 
 		print(f"recieved {self.name}'s response.\n")
 
