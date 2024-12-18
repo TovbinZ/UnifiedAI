@@ -72,7 +72,6 @@ Use multiple AI instances at once using a Batch instance.
 ```python
     
 from UnifiedAI import *
-import json
 
 gpt = AI("gpt","OPENAI_API_KEY","gpt-4o")
 claude = AI("claude","ANTHROPIC_API_KEY","claude-3-5-sonnet-latest")
@@ -89,7 +88,8 @@ models.add_context("My name is John.")
 
 # get_response returns a dictionary object with
 # the model names and their responses
-print(json.dumps(models.get_response("what is my name?"),indent=4))
+responses = models.get_response("what is my name?")
+print(responses)
 
 # print the ouput token usage of each model
 print(models.usage["gpt"].output_tokens)
@@ -102,7 +102,6 @@ Compare responses with different system instructions.
 
 ```python
 from UnifiedAI import *
-import json
 
 angry = AI("angry","OPENAI_API_KEY","gpt-4o")
 sarcastic = AI("sarcastic","OPENAI_API_KEY","gpt-4o")
@@ -115,11 +114,11 @@ sad.set_instructions("Answer in a sad way.")
 
 emotions = Batch([angry,sarcastic,sad])
 
-
 emotions.set_max_tokens(100)
 
 
-print(json.dumps(emotions.get_response("what is 1 + 1?"),indent=4))
+responses = emotions.get_response("what is 1 + 1?")
+print(responses)
 
 
 print(models.usage["angry"].output_tokens)
