@@ -41,12 +41,15 @@ class Claude(API):
 
 		print(f"recieved {self.name}'s response.\n")
 
-		return  response.content[0].text  # type: ignore
+		return  response.content[0].text
 
 
 	def _add(self, text : str) -> None:
 		self.history.append({"role": "user", "content": [{"type": "text", "text": f"{text}"}]})
 
+
+	def reset_history(self) -> None:
+		self.history = []
 
 	def set_instructions(self, instructions) -> None:
 		self.system_instructions = instructions

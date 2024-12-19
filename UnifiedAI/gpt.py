@@ -42,6 +42,8 @@ class GPT(API):
 
 		return str(response.choices[0].message.content)
 
+	def reset_history(self) -> None:
+		self.history : list[ChatCompletionMessageParam] = [{"role": "system", "content": f"{self.system_instructions}"},]
 
 	def _add(self, text: str) -> None:
 		self.history.append(ChatCompletionUserMessageParam(

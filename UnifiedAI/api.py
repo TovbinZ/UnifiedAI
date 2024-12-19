@@ -9,7 +9,6 @@ class API(ABC):
             self.output_tokens = _output_tokens
 
 
-
     # abstract helper method for tracking token usage
     @abstractmethod
     def _trackUsage(self,message) -> None:
@@ -23,6 +22,11 @@ class API(ABC):
     # abstract helper method for asking the ai a question.
     @abstractmethod
     def _ask(self) -> str:
+        pass
+
+    # abstract method for reseting self.history
+    @abstractmethod
+    def reset_history(self) -> None:
         pass
 
     # set the system instructions to be used.

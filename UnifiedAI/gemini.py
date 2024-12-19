@@ -58,6 +58,9 @@ class Gemini(API):
 					}
 				)
 
+	def reset_history(self) -> None:
+		self.history = []
+
 	def set_instructions(self, instructions : str) -> None:
 		
 		self.system_instructions = instructions
