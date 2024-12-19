@@ -26,13 +26,15 @@ class Gemini(API):
 			system_instruction = self.system_instructions,
         )
 
-		self.usage = self.Usage(0,0)
+		self.usage = self.Usage(0,0,0)
 
 		self.history = []
 
 
 
 	def _trackUsage(self,message) -> None:
+
+		self.usage.api_calls += 1
 
 		self.usage.input_tokens += message.usage_metadata.prompt_token_count
 

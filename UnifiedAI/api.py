@@ -3,10 +3,12 @@ from abc import ABC, abstractmethod
 class API(ABC):
 
     class Usage():
-        def __init__(self,_input_tokens : int, _output_tokens : int):
+        def __init__(self,_input_tokens : int, _output_tokens : int, _api_calls : int):
             self.input_tokens = _input_tokens
 
             self.output_tokens = _output_tokens
+
+            self.api_calls = _api_calls
 
 
     # abstract helper method for tracking token usage

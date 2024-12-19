@@ -18,12 +18,14 @@ class Claude(API):
 
 		self.max_tokens = 512
 
-		self.usage = self.Usage(0,0)
+		self.usage = self.Usage(0,0,0)
 
 		self.history = []
 
 
 	def _trackUsage(self,message) -> None:
+
+		self.usage.api_calls += 1
 
 		self.usage.input_tokens += message.usage.input_tokens
 

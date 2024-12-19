@@ -19,13 +19,15 @@ class GPT(API):
 
 		self.max_tokens = 512
 
-		self.usage = self.Usage(0,0)
+		self.usage = self.Usage(0,0,0)
 
 		self.history: list[ChatCompletionMessageParam] = [{"role": "system", "content": f"{self.system_instructions}"},]
 
 
 
 	def _trackUsage(self,message) -> None:
+
+		self.usage.api_calls += 1
 
 		self.usage.input_tokens += message.usage.prompt_tokens
 
