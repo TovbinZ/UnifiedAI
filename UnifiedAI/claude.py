@@ -25,9 +25,9 @@ class Claude(API):
 
 	def _trackUsage(self,message) -> None:
 
-		self.usage.input_tokens = message.usage.input_tokens
+		self.usage.input_tokens += message.usage.input_tokens
 
-		self.usage.output_tokens = message.usage.output_tokens
+		self.usage.output_tokens += message.usage.output_tokens
 
 	def _ask(self) -> str:
 		response = self.connect.messages.create(

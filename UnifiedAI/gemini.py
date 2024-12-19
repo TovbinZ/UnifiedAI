@@ -34,9 +34,9 @@ class Gemini(API):
 
 	def _trackUsage(self,message) -> None:
 
-		self.usage.input_tokens = message.usage_metadata.prompt_token_count
+		self.usage.input_tokens += message.usage_metadata.prompt_token_count
 
-		self.usage.output_tokens = message.usage_metadata.candidates_token_count
+		self.usage.output_tokens += message.usage_metadata.candidates_token_count
 
 
 	def _ask(self):

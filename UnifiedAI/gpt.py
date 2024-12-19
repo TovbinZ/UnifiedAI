@@ -27,9 +27,9 @@ class GPT(API):
 
 	def _trackUsage(self,message) -> None:
 
-		self.usage.input_tokens = message.usage.prompt_tokens
+		self.usage.input_tokens += message.usage.prompt_tokens
 
-		self.usage.output_tokens = message.usage.completion_tokens
+		self.usage.output_tokens += message.usage.completion_tokens
 
 
 	def _ask(self) -> str:
