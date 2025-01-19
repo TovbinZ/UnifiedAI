@@ -16,7 +16,7 @@ class API(ABC):
     def _trackUsage(self,message) -> None:
         pass
 
-	# abstract helper method for adding text to self.history
+    # abstract helper method for adding text to self.history
     @abstractmethod
     def _add(self, text: str) -> None:
         pass
@@ -38,17 +38,17 @@ class API(ABC):
 
     # set the max tokens to be used.
     def set_max_tokens(self,tokens: int) -> None:
-    	self.max_tokens = tokens
+        self.max_tokens = tokens
 
     # add context to self.history without sending an api call.
     def add_context(self, context: str) -> None:
-    	self._add(context)
+        self._add(context)
 
     # get response from the ai with self.history as context along with the question.
     def get_response(self, question: str) -> None:
-       self._add(question)
-       return self._ask()
-
+        self._add(question)
+        return self._ask()
+       
     # return a cleaned up self.history.
     @abstractmethod
     def history(self) -> list:

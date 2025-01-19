@@ -2,6 +2,8 @@ from UnifiedAI.api import API
 from UnifiedAI.claude import Claude
 from UnifiedAI.gpt import GPT
 from UnifiedAI.gemini import Gemini
+from UnifiedAI.ollama import Ollama
+
 
 
 def AI(name : str, key : str, model : str) -> API:
@@ -16,7 +18,7 @@ def AI(name : str, key : str, model : str) -> API:
 		return Gemini(name, key, model)
 
 	else:
-		raise NameError("No model of that name.")
+		return Ollama(name,key,model)
 
 
 

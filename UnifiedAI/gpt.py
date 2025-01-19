@@ -24,7 +24,6 @@ class GPT(API):
 		self.history: list[ChatCompletionMessageParam] = [{"role": "system", "content": f"{self.system_instructions}"},]
 
 
-
 	def _trackUsage(self,message) -> None:
 
 		self.usage.api_calls += 1

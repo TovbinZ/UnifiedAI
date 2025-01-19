@@ -1,7 +1,7 @@
 UnifiedAI
 =========
 
-UnifiedAI is a Python package that simplifies the usage of multiple AI APIs by providing a single, unified API. Currently, it supports OpenAI, Anthropic, and Google AI APIs.
+UnifiedAI is a Python package that simplifies the usage of multiple AI APIs by providing a single, unified API. Currently, it supports OpenAI, Anthropic, Google, and Ollama AI APIs.
 
 
 ## Features
@@ -9,6 +9,7 @@ UnifiedAI is a Python package that simplifies the usage of multiple AI APIs by p
 - Single API for multiple AI providers.
 - Easy switching between different AI models.
 - Simplified authentication and API key management.
+- 
 
 
 Installation
@@ -72,13 +73,15 @@ Use multiple AI instances at once using a Batch instance.
 ```python
     
 from UnifiedAI import *
+import json
 
 gpt = AI("gpt","OPENAI_API_KEY","gpt-4o")
 claude = AI("claude","ANTHROPIC_API_KEY","claude-3-5-sonnet-latest")
 gemeni = AI("gemini","GEMINI_API_KEY","gemini-1.5-pro")
+llama = AI("llama",None,"llama3.2") 
 
 
-models  = Batch([gpt, claude, gemeni])
+models  = Batch([gpt, claude, gemeni,llama])
 
 models.set_instructions("You are a sarcastically helpful assistant.")
 
@@ -88,13 +91,13 @@ models.add_context("My name is John.")
 
 # get_response returns a dictionary object with
 # the model names and their responses
-responses = models.get_response("what is my name?")
-print(responses)
+print(json.dumps(models.get_response("what is my name?"),indent=4))
 
 # print the ouput token usage of each model
 print(models.usage["gpt"].output_tokens)
 print(models.usage["claude"].output_tokens)
 print(models.usage["gemini"].output_tokens)
+print(models.usage["llama"].output_tokens)
 
 ```
 
@@ -102,6 +105,7 @@ Compare responses with different system instructions.
 
 ```python
 from UnifiedAI import *
+import json
 
 angry = AI("angry","OPENAI_API_KEY","gpt-4o")
 sarcastic = AI("sarcastic","OPENAI_API_KEY","gpt-4o")
@@ -114,11 +118,11 @@ sad.set_instructions("Answer in a sad way.")
 
 emotions = Batch([angry,sarcastic,sad])
 
+
 emotions.set_max_tokens(100)
 
 
-responses = emotions.get_response("what is 1 + 1?")
-print(responses)
+print(json.dumps(emotions.get_response("what is 1 + 1?"),indent=4))
 
 
 print(models.usage["angry"].output_tokens)
