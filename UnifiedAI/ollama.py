@@ -15,9 +15,11 @@ class Ollama(API):
 
 		self.model_name = model
 
+		self.system_instructions = "You are a helpful assistant."
+
 		self.usage = self.Usage(0,0,0)
 
-		self.history: list = []
+		self.history: list = [{"role": "system", "content": f"{self.system_instructions}"}]
 
 
 	def _trackUsage(self,message : ChatResponse) -> None:
@@ -52,7 +54,8 @@ class Ollama(API):
 
 
 	def set_instructions(self, instructions : str) -> None:
-		print("WARNING: System instructions cannot be set for local ollama models.")
+		self.system_instructions = instructions
+		self.history[0] = {"role": "system", "content": f"{self.system_instructions}"}
 
 	def set_max_tokens(self,tokens: int) -> None:
 		print("WARNING: unable to set max tokens for a local ollama model.")

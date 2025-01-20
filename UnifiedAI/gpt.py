@@ -21,7 +21,7 @@ class GPT(API):
 
 		self.usage = self.Usage(0,0,0)
 
-		self.history: list[ChatCompletionMessageParam] = [{"role": "system", "content": f"{self.system_instructions}"},]
+		self.history: list[ChatCompletionMessageParam] = [{"role": "system", "content": f"{self.system_instructions}"}]
 
 
 	def _trackUsage(self,message) -> None:
