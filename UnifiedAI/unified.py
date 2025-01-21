@@ -52,7 +52,7 @@ class Batch():
 		for model in self.models:
 			responses[model.name] = model.get_response(question)
 
-			self.usage[model.name] = model.Usage(model.usage.input_tokens,model.usage.output_tokens)
+			self.usage[model.name] = model.Usage(model.usage.api_calls,model.usage.input_tokens,model.usage.output_tokens)
 
 		return responses
 
