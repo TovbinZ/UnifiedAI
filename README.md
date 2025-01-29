@@ -26,7 +26,7 @@ Usage
 Creating an AI instance
 ```python
 
-API = AI(instance_name,api_key,model_name)
+API = AI(instance_name,api_provider,api_key,model_name)
 
 ```
 
@@ -35,7 +35,7 @@ Usage and methods of using one AI instance
 ```python  
 from UnifiedAI import *
 
-API = AI("gpt4","OPENAI_API_KEY","gpt-4o")
+API = AI("gpt4","openai","OPENAI_API_KEY","gpt-4o")
 
 
 #default is "You are a helpful assistant"
@@ -75,10 +75,10 @@ Use multiple AI instances at once using a Batch instance.
 from UnifiedAI import *
 import json
 
-gpt = AI("gpt","OPENAI_API_KEY","gpt-4o")
-claude = AI("claude","ANTHROPIC_API_KEY","claude-3-5-sonnet-latest")
-gemeni = AI("gemini","GEMINI_API_KEY","gemini-1.5-pro")
-llama = AI("llama",None,"llama3.2") 
+gpt = AI("gpt","openai","OPENAI_API_KEY","gpt-4o")
+claude = AI("claude","anthropic","ANTHROPIC_API_KEY","claude-3-5-sonnet-latest")
+gemeni = AI("gemini","google","GEMINI_API_KEY","gemini-1.5-pro")
+llama = AI("llama","ollama",None,"llama3.2") 
 
 
 models  = Batch([gpt, claude, gemeni,llama])
@@ -107,9 +107,9 @@ Compare responses with different system instructions.
 from UnifiedAI import *
 import json
 
-angry = AI("angry","OPENAI_API_KEY","gpt-4o")
-sarcastic = AI("sarcastic","OPENAI_API_KEY","gpt-4o")
-sad = AI("sad","OPENAI_API_KEY","gpt-4o")
+angry = AI("angry","openai","OPENAI_API_KEY","gpt-4o")
+sarcastic = AI("sarcastic","openai","OPENAI_API_KEY","gpt-4o")
+sad = AI("sad","openai","OPENAI_API_KEY","gpt-4o")
 
 angry.set_instructions("Answer in a angry way.")
 sarcastic.set_instructions("Answer in a sarcastic way.")

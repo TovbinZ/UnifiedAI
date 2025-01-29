@@ -6,20 +6,25 @@ from UnifiedAI.ollama import Ollama
 
 
 
-def AI(name : str, key : str, model : str) -> API:
+def AI(instance_name : str, api_provider : str, key : str, model : str) -> API:
 	
-	if "gpt" in model:
-		return GPT(name, key, model)
+	if api_provider == "openai":
+		print("open")
+		return GPT(instance_name, key, model, False)
 
-	elif "claude" in model:
-		return Claude(name, key, model)
+	elif api_provider == "anthropic":
+		print("anth")
+		return Claude(instance_name, key, model)
 
-	elif "gemini" in model:
-		return Gemini(name, key, model)
+	elif api_provider == "google":
+		print("goo")
+		return Gemini(instance_name, key, model)
 
+	elif api_provider == "ollama":
+		print("oll")
+		return Ollama(instance_name, key, model)
 	else:
-		return Ollama(name,key,model)
-
+		print("Error: no AI API provider by that name.")
 
 
 class Batch():
