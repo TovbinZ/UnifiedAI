@@ -9,7 +9,6 @@ UnifiedAI is a Python package that simplifies the usage of multiple AI APIs by p
 - Single API for multiple AI providers.
 - Easy switching between different AI models.
 - Simplified authentication and API key management.
-- 
 
 
 Installation
@@ -42,7 +41,7 @@ API = AI("gpt4","openai","OPENAI_API_KEY","gpt-4o")
 API.set_instructions("You are a sarcastically helpful assistant.")
 
 
-#defualt is 512
+#default is 512
 API.set_max_tokens(100)
 
 
@@ -77,11 +76,11 @@ import json
 
 gpt = AI("gpt","openai","OPENAI_API_KEY","gpt-4o")
 claude = AI("claude","anthropic","ANTHROPIC_API_KEY","claude-3-5-sonnet-latest")
-gemeni = AI("gemini","google","GEMINI_API_KEY","gemini-1.5-pro")
+gemini = AI("gemini","google","GEMINI_API_KEY","gemini-1.5-pro")
 llama = AI("llama","ollama",None,"llama3.2") 
 
 
-models  = Batch([gpt, claude, gemeni,llama])
+models  = Batch([gpt, claude, gemini,llama])
 
 models.set_instructions("You are a sarcastically helpful assistant.")
 
@@ -93,7 +92,7 @@ models.add_context("My name is John.")
 # the model names and their responses
 print(json.dumps(models.get_response("what is my name?"),indent=4))
 
-# print the ouput token usage of each model
+# print the output token usage of each model
 print(models.usage["gpt"].output_tokens)
 print(models.usage["claude"].output_tokens)
 print(models.usage["gemini"].output_tokens)
@@ -125,8 +124,8 @@ emotions.set_max_tokens(100)
 print(json.dumps(emotions.get_response("what is 1 + 1?"),indent=4))
 
 
-print(models.usage["angry"].output_tokens)
-print(models.usage["sarcastic"].output_tokens)
-print(models.usage["sad"].output_tokens)
+print(emotions.usage["angry"].output_tokens)
+print(emotions.usage["sarcastic"].output_tokens)
+print(emotions.usage["sad"].output_tokens)
 
 ```
