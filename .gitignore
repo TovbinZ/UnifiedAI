@@ -5,7 +5,7 @@ __pycache__/
 
 tests/*
 
-# C extensions
+#   C extensions
 *.so
 
 .DS_Store
