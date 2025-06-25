@@ -11,7 +11,7 @@ class API(ABC):
             self.api_calls = _api_calls
 
 
-    # abstract helper method for tracking token usage
+    #   abstract helper method for tracking token usage
     @abstractmethod
     def _trackUsage(self,message) -> None:
         pass
